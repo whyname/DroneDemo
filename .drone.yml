@@ -13,6 +13,12 @@ pipeline:
       - npm test
 
   notify:
-    image: plugins/slack
-    channel: developers
-    username: drone
+    image: drillster/drone-email
+    host: smtp.exmail.qq.com
+    username: app@deltaentropy.com
+    password: 7jiong@APP
+    from: app@deltaentropy.com
+    recipients: [ zhoufp@deltaentropy.com ]
+    recipients_only: true
+    when:
+      status: [ changed, failure ]
